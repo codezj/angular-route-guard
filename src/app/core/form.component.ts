@@ -26,15 +26,23 @@ export class FormComponent{
         router: Router
         )
         {
-
-
+            
+            
+            
+            this.router = router;
+            
+            
             activateRoute.params.subscribe(params => {
-
+                
                 this.editing = activateRoute.snapshot.params["mode"] == "edit";
                 let id = +params["id"];
                 if (id != null){
                     Object.assign(this.product, model.getProduct(id) || new Product())
+                    // this.originalProduct = this.product
+                    this.originalProduct = structuredClone(this.product)
+                    console.log(this.originalProduct, this.product,'.....');
                 }
+
             })
             // this.router = router;
             // this.editing = activateRoute.snapshot.params["mode"] == "edit";
@@ -100,9 +108,13 @@ export class FormComponent{
         if (form.valid) {
             this.model.saveProduct(this.product);
             this.originalProduct = this.product;
+            // console.log('fffffffffff',this.originalProduct,this.product);
+            
             // this.product = new Product();
             // form.reset()
             this.router.navigateByUrl("/")
+            console.log(this.router,'router');
+            
         }
     }
 

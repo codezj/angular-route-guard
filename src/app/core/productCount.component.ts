@@ -22,8 +22,8 @@ export class ProductCountComponent{
                 activateRoute: ActivatedRoute
                 ){
 
-                    activateRoute.pathFromRoot.forEach(route => console.log(route.params.subscribe(pa=>{console.log(pa);
-                    }),'gggggggggggg'));
+                    // activateRoute.pathFromRoot.forEach(route => console.log(route.params.subscribe(pa=>{console.log(pa);
+                    // }),'gggggggggggg'));
                     
                             
                     

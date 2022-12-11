@@ -7,6 +7,7 @@ import { ProductCountComponent } from "./core/productCount.component";
 import { ModelResolver } from "./model/model.resolver";
 import { TermsGuard } from "./terms.guard";
 import { UnsavedGuard } from "./core/unsaved.guard";
+import { LoadGuard } from "./load.guard";
 
 
 const childRoutes: Routes = [
@@ -26,6 +27,16 @@ const childRoutes: Routes = [
 const routes: Routes = [
     // {path: "form/edit", component:FormComponent},
     // {path: "form/create", component:FormComponent},
+
+    {path: "ondemand",
+    loadChildren: ()=> import("./ondemand/ondemand.module")
+                                .then(m => m.OndemandModule),
+                            
+                                canLoad: [LoadGuard]
+                            },
+    
+
+
     {path: "form/:mode/:id", component: FormComponent,
 resolve: {model: ModelResolver},
 canDeactivate: [UnsavedGuard]

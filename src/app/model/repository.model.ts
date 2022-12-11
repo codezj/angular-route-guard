@@ -29,7 +29,7 @@ export class Model {
     }
 
     getProduct(id: number | undefined): any {
-        console.log(this.products,'products');
+        // console.log(this.products,'products');
         
         return this.products.find(p => this.locator(p, id));
     }
